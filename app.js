@@ -6,7 +6,7 @@
 
 /* ---------- 系统状态机 ---------- */
 const AppState = { current: 'home', stack: [] };
-
+console.log("Angel Phone app.js loaded");
 function openApp(screenName) {
   const from = document.querySelector('.screen.active');
   const to = document.querySelector(`.screen[data-screen="${screenName}"]`);
