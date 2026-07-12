@@ -3,22 +3,55 @@ box-sizing:border-box;
 }
 
 
-body{
+:root{
+
+--bg:
+linear-gradient(
+180deg,
+#f5f5f7,
+#e5e5e7
+);
+
+--text:#1c1c1e;
+
+--glass:
+rgba(255,255,255,.75);
+
+--border:
+rgba(255,255,255,.8);
+
+}
+
+
+
+html,body{
 
 margin:0;
-height:100vh;
-background:#d8d8da;
 
-display:flex;
-justify-content:center;
-align-items:center;
+width:100%;
+height:100%;
 
 font-family:
 -apple-system,
 BlinkMacSystemFont,
 "PingFang SC",
+"Helvetica Neue",
 Arial,
 sans-serif;
+
+-webkit-tap-highlight-color:transparent;
+
+}
+
+
+
+body{
+
+background:#d1d1d3;
+
+display:flex;
+
+justify-content:center;
 
 }
 
@@ -27,15 +60,12 @@ sans-serif;
 .phone{
 
 width:100%;
+
 max-width:430px;
+
 height:100vh;
 
-background:
-linear-gradient(
-180deg,
-#f5f5f7,
-#e8e8ea
-);
+background:var(--bg);
 
 overflow:hidden;
 
@@ -47,45 +77,77 @@ overflow:hidden;
 
 height:45px;
 
+padding:14px 24px 5px;
+
 display:flex;
-align-items:center;
+
 justify-content:space-between;
 
-padding:15px 25px;
+align-items:center;
 
-font-size:14px;
+font-size:15px;
+
 font-weight:600;
+
+color:var(--text);
 
 }
 
 
 
-.pages{
+.status-right{
 
-height:calc(100% - 45px);
+display:flex;
+
+align-items:center;
+
+gap:6px;
+
+}
+
+
+
+.status-right svg{
+
+width:18px;
+
+height:12px;
+
+fill:none;
+
+stroke:currentColor;
+
+stroke-width:1.5;
+
+}
+
+
+
+.screen-container{
 
 position:relative;
 
+height:calc(100vh - 45px);
+
 }
 
 
 
-.page{
+.screen{
 
 position:absolute;
 
-width:100%;
-height:100%;
+inset:0;
+
+padding:30px 25px;
 
 display:none;
-
-padding:40px 25px;
 
 }
 
 
 
-.page.active{
+.screen.active{
 
 display:block;
 
@@ -93,40 +155,60 @@ display:block;
 
 
 
-/* 首页 */
+
+
+/* 首页时钟 */
+
 
 .clock{
 
+margin-top:50px;
+
 text-align:center;
+
+}
+
+
+
+.big-time{
 
 font-size:60px;
 
 font-weight:300;
 
-margin-top:50px;
+letter-spacing:-2px;
+
+color:var(--text);
 
 }
+
 
 
 .date{
 
-text-align:center;
+margin-top:12px;
 
-color:#888;
+font-size:14px;
 
-margin-top:10px;
+color:#8e8e93;
 
 }
 
 
 
-.apps{
+
+
+/* APP图标 */
+
+
+.app-grid{
 
 display:grid;
 
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:
+repeat(4,1fr);
 
-gap:30px;
+gap:30px 15px;
 
 margin-top:70px;
 
@@ -134,45 +216,74 @@ margin-top:70px;
 
 
 
-.apps button{
+.app{
 
 border:0;
 
 background:none;
 
-font-size:12px;
+padding:0;
 
 cursor:pointer;
+
+color:var(--text);
+
+font-size:12px;
 
 }
 
 
 
-.icon{
+.app-icon{
 
-width:65px;
-height:65px;
+width:62px;
+
+height:62px;
 
 margin:auto;
 
 border-radius:20px;
 
-background:white;
+background:var(--glass);
+
+border:1px solid var(--border);
 
 display:flex;
 
-align-items:center;
-
 justify-content:center;
 
-font-size:32px;
+align-items:center;
 
 box-shadow:
-0 5px 15px rgba(0,0,0,.08);
 
-margin-bottom:8px;
+0 8px 20px rgba(0,0,0,.08);
 
 }
+
+
+
+.app-icon svg{
+
+width:30px;
+
+height:30px;
+
+stroke:currentColor;
+
+stroke-width:1.5;
+
+fill:none;
+
+}
+
+
+
+.app:active .app-icon{
+
+transform:scale(.92);
+
+}
+
 
 
 
@@ -181,6 +292,8 @@ margin-bottom:8px;
 
 
 header{
+
+height:50px;
 
 display:flex;
 
@@ -191,10 +304,12 @@ gap:20px;
 }
 
 
+
 header button{
 
-width:35px;
-height:35px;
+width:36px;
+
+height:36px;
 
 border-radius:50%;
 
@@ -202,27 +317,38 @@ border:0;
 
 background:white;
 
-font-size:25px;
+font-size:28px;
+
+line-height:30px;
 
 cursor:pointer;
 
 }
 
 
+
 header h2{
 
 font-size:20px;
+
+margin:0;
 
 }
 
 
 
-.content{
+.empty{
 
-margin-top:60px;
+height:80%;
 
-text-align:center;
+display:flex;
 
-color:#666;
+justify-content:center;
+
+align-items:center;
+
+color:#8e8e93;
+
+font-size:14px;
 
 }
