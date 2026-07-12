@@ -1,0 +1,253 @@
+/* ============================================
+   Angel Phone —— 设计令牌（Design Tokens）
+   以后所有页面的颜色/圆角/字体/动画都从这里取值
+   不允许在具体页面样式里写死数值
+   ============================================ */
+:root {
+  /* 颜色：白灰玻璃拟态，全程无蓝色/彩色强调色 */
+  --color-bg: #eeeeef;
+  --color-bg-gradient: linear-gradient(180deg, #f4f4f5 0%, #e8e8ea 100%);
+  --color-surface: rgba(255, 255, 255, 0.6);
+  --color-surface-strong: rgba(255, 255, 255, 0.85);
+  --color-border: rgba(255, 255, 255, 0.7);
+  --color-text-primary: #1c1c1e;
+  --color-text-secondary: #8a8a8e;
+  --color-text-tertiary: #b0b0b4;
+  --color-accent: #1c1c1e;
+  --color-icon: #2c2c2e;
+
+  /* 圆角 */
+  --radius-icon: 26%;
+  --radius-card: 20px;
+  --radius-card-lg: 28px;
+  --radius-pill: 999px;
+
+  /* 字体 */
+  --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Helvetica Neue", sans-serif;
+
+  /* 阴影 */
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.04);
+
+  /* 模糊 */
+  --blur-glass: 18px;
+
+  /* 动画 */
+  --ease-ios: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-fast: 200ms;
+  --transition-screen: 360ms;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: var(--font-system);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: #d8d8da;
+  display: flex;
+  justify-content: center;
+}
+
+/* 不做手机外壳/边框，页面本身就是"手机屏幕" */
+.phone-screen {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  background: var(--color-bg-gradient);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================= 状态栏 ================= */
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px 6px;
+  flex-shrink: 0;
+  color: var(--color-text-primary);
+}
+
+.status-time {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-icon);
+}
+
+.status-icons svg {
+  height: 11px;
+}
+.icon-signal { width: 18px; }
+.icon-wifi { width: 15px; }
+.icon-battery { width: 24px; }
+
+/* ================= 屏幕容器 ================= */
+.screen-container {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.03);
+  transition: opacity var(--transition-screen) var(--ease-ios),
+              transform var(--transition-screen) var(--ease-ios);
+}
+
+.screen.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* ================= 主屏幕 ================= */
+.screen-home {
+  padding: 40px 28px;
+  align-items: flex-start;
+}
+
+.home-clock {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.home-time {
+  font-size: 56px;
+  font-weight: 300;
+  color: var(--color-text-primary);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.home-date {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.app-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 12px;
+}
+
+.app-icon {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.icon-squircle {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-icon);
+  background: var(--color-surface-strong);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-icon);
+  transition: transform var(--transition-fast) var(--ease-ios);
+}
+
+.icon-squircle svg {
+  width: 26px;
+  height: 26px;
+}
+
+.app-icon:active .icon-squircle {
+  transform: scale(0.9);
+}
+
+.app-label {
+  font-size: 11px;
+  color: var(--color-text-primary);
+}
+
+/* ================= 通用 App 页面（占位页会复用） ================= */
+.app-view {
+  background: var(--color-bg-gradient);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 12px;
+  flex-shrink: 0;
+}
+
+.btn-back {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-surface);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-icon);
+  cursor: pointer;
+}
+
+.btn-back svg {
+  width: 18px;
+  height: 18px;
+}
+
+.app-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.header-spacer {
+  width: 36px;
+}
+
+.placeholder-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  font-size: 14px;
+  padding: 0 32px;
+  text-align: center;
+}
