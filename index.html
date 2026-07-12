@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
 <title>Angel Phone</title>
 
@@ -14,64 +10,75 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 
 </head>
 
-
 <body>
 
 
-<div class="phone">
+<div class="phone-screen">
 
 
-<!-- 状态栏 -->
+<!-- ================= 状态栏 ================= -->
 
-<div class="status">
+<div class="status-bar">
 
-<span id="time">9:41</span>
+<span id="status-time">
+23:59
+</span>
 
-<div class="status-right">
 
-<svg viewBox="0 0 20 12">
-<rect x="1" y="7" width="3" height="5" rx="1"/>
-<rect x="6" y="5" width="3" height="7" rx="1"/>
-<rect x="11" y="3" width="3" height="9" rx="1"/>
-<rect x="16" y="1" width="3" height="11" rx="1"/>
+<div class="status-icons">
+
+<svg viewBox="0 0 24 12">
+<rect x="1" y="7" width="3" height="5"/>
+<rect x="6" y="5" width="3" height="7"/>
+<rect x="11" y="3" width="3" height="9"/>
+<rect x="16" y="1" width="3" height="11"/>
 </svg>
 
 
 <svg viewBox="0 0 24 16">
-<path d="M2 6c5-5 15-5 20 0"/>
-<path d="M6 10c3-3 9-3 12 0"/>
+<path d="M2 5C8-1 16-1 22 5"/>
+<path d="M6 9C10 5 14 5 18 9"/>
 <circle cx="12" cy="13" r="1"/>
 </svg>
 
 
-<svg viewBox="0 0 26 12">
-<rect x="1" y="1" width="21" height="10" rx="3"/>
-<rect x="23" y="4" width="2" height="4" rx="1"/>
+<svg viewBox="0 0 28 14">
+<rect x="1" y="1" width="22" height="12" rx="3"/>
+<rect x="3" y="3" width="18" height="8" rx="2"/>
+<rect x="24" y="5" width="3" height="4"/>
 </svg>
 
-</div>
 
 </div>
 
+</div>
 
+
+
+
+
+<!-- ================= 页面容器 ================= -->
 
 <div class="screen-container">
 
 
 
-<!-- 首页 -->
-
-<section class="screen active" id="home">
 
 
-<div class="clock">
+<!-- ================= HOME ================= -->
 
-<div class="big-time" id="homeTime">
-9:41
+
+<section class="screen active" data-screen="home">
+
+
+<div class="home-clock">
+
+<div id="home-time">
+23:59
 </div>
 
 
-<div class="date" id="date">
+<div id="home-date">
 星期日 · 7月12日
 </div>
 
@@ -83,73 +90,52 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 <div class="app-grid">
 
 
+<button class="app-icon" data-open="chat">
 
-<button class="app" onclick="openApp('chat')">
 
-<div class="app-icon">
+<div class="icon-box">
+
 
 <svg viewBox="0 0 24 24">
 
-<path d="M5 5.5
-C5 4.7 5.7 4 6.5 4
-H17.5
-C18.3 4 19 4.7 19 5.5
-V14.5
-C19 15.3 18.3 16 17.5 16
-H10
-L5 20
-V16
-H6.5
-C5.7 16 5 15.3 5 14.5Z"/>
+<path d="M4 5.5C4 4.7 4.7 4 5.5 4h13c.8 0 1.5.7 1.5 1.5v9c0 .8-.7 1.5-1.5 1.5H9l-5 4v-4.5c0-.8 0-1.5 0-1.5z"/>
 
 </svg>
 
+
 </div>
 
-<span>Chat</span>
+
+<span>
+Chat
+</span>
+
 
 </button>
 
 
 
 
-<button class="app" onclick="openApp('settings')">
 
-<div class="app-icon">
+<button class="app-icon" data-open="settings">
+
+
+<div class="icon-box">
 
 <svg viewBox="0 0 24 24">
 
 <circle cx="12" cy="12" r="3"/>
 
-<path d="M19 13
-a7 7 0 0 0 0-2
-l2-1
--2-3
--2 1
-a7 7 0 0 0-2-1
-l-1-3h-3
-l-1 3
-a7 7 0 0 0-2 1
-l-2-1
--2 3
-2 1
-a7 7 0 0 0 0 2
-l-2 1
-2 3
-2-1
-a7 7 0 0 0 2 1
-l1 3h3
-l1-3
-a7 7 0 0 0 2-1
-l2 1
-2-3z"/>
+<path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.4-2.3 1a7 7 0 0 0-1.7-1L14.5 3h-5l-.4 3.1a7 7 0 0 0-1.7 1l-2.3-1-2 3.4L5 11a7 7 0 0 0 0 2l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 1.7 1l.4 3.1h5l.4-3.1a7 7 0 0 0 1.7-1l2.3 1 2-3.4-2-1.5a7 7 0 0 0 .2-1z"/>
 
 </svg>
 
-
 </div>
 
-<span>设置</span>
+
+<span>
+设置
+</span>
 
 
 </button>
@@ -164,75 +150,85 @@ l2 1
 
 
 
-<!-- Chat -->
-
-<section class="screen" id="chat">
+<!-- ================= CHAT APP ================= -->
 
 
-<header>
+<section class="screen app-screen" data-screen="chat">
 
-<button onclick="goHome()">‹</button>
 
-<h2>Chat</h2>
+
+<!-- CHAT 首页 -->
+
+
+<div class="chat-home">
+
+
+
+<header class="chat-header">
+
+
+<h2>
+Chat
+</h2>
+
+
+<button id="chat-add">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M12 5v14M5 12h14"/>
+
+</svg>
+
+</button>
+
 
 </header>
 
 
-<div class="empty">
 
-<p>
-Chat 模块准备中
-</p>
+
+<div class="profile-card">
+
+
+<div class="avatar">
+
+
+<svg viewBox="0 0 24 24">
+
+<circle cx="12" cy="8" r="3"/>
+
+<path d="M5 19c1-3 3-5 7-5s6 2 7 5"/>
+
+</svg>
+
 
 </div>
 
 
-</section>
+<div>
 
 
-
-
-
-
-<!-- 设置 -->
-
-<section class="screen" id="settings">
-
-
-<header>
-
-<button onclick="goHome()">‹</button>
-
-<h2>设置</h2>
-
-</header>
-
-
-<div class="empty">
+<h3>
+Angel
+</h3>
 
 <p>
-设置模块准备中
+一颗心，半滴泪。
 </p>
 
 
 </div>
 
 
-</section>
-
-
-
-
-</div>
-
-
 </div>
 
 
 
-<script src="app.js"></script>
+<div id="contact-list">
+
+</div>
 
 
-</body>
 
-</html>
+</div>
