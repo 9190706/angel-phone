@@ -3,27 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-
 <title>Angel Phone</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-
 <div class="phone-screen">
 
-
-<!-- ================= 状态栏 ================= -->
-
+<!-- 状态栏 -->
 <div class="status-bar">
-
-<span id="status-time">
-23:59
-</span>
-
+<span id="status-time">9:41</span>
 
 <div class="status-icons">
 
@@ -34,57 +24,32 @@
 <rect x="16" y="1" width="3" height="11"/>
 </svg>
 
-
 <svg viewBox="0 0 24 16">
-<path d="M2 5C8-1 16-1 22 5"/>
-<path d="M6 9C10 5 14 5 18 9"/>
+<path d="M2 6C8 0 16 0 22 6"/>
+<path d="M6 10C10 6 14 6 18 10"/>
 <circle cx="12" cy="13" r="1"/>
 </svg>
-
 
 <svg viewBox="0 0 28 14">
 <rect x="1" y="1" width="22" height="12" rx="3"/>
 <rect x="3" y="3" width="18" height="8" rx="2"/>
-<rect x="24" y="5" width="3" height="4"/>
 </svg>
 
-
+</div>
 </div>
 
-</div>
-
-
-
-
-
-<!-- ================= 页面容器 ================= -->
 
 <div class="screen-container">
 
 
-
-
-
-<!-- ================= HOME ================= -->
-
+<!-- 首页 -->
 
 <section class="screen active" data-screen="home">
 
-
 <div class="home-clock">
-
-<div id="home-time">
-23:59
+<div id="home-time">9:41</div>
+<div id="home-date">星期日 · 7月12日</div>
 </div>
-
-
-<div id="home-date">
-星期日 · 7月12日
-</div>
-
-</div>
-
-
 
 
 <div class="app-grid">
@@ -92,33 +57,21 @@
 
 <button class="app-icon" data-open="chat">
 
-
 <div class="icon-box">
 
-
 <svg viewBox="0 0 24 24">
-
-<path d="M4 5.5C4 4.7 4.7 4 5.5 4h13c.8 0 1.5.7 1.5 1.5v9c0 .8-.7 1.5-1.5 1.5H9l-5 4v-4.5c0-.8 0-1.5 0-1.5z"/>
-
+<path d="M4 5.5C4 4.7 4.7 4 5.5 4h13c.8 0 1.5.7 1.5 1.5v9c0 .8-.7 1.5-1.5 1.5H9l-5 4v-4.5"/>
 </svg>
-
 
 </div>
 
-
-<span>
-Chat
-</span>
-
+<span>Chat</span>
 
 </button>
 
 
 
-
-
 <button class="app-icon" data-open="settings">
-
 
 <div class="icon-box">
 
@@ -126,19 +79,446 @@ Chat
 
 <circle cx="12" cy="12" r="3"/>
 
-<path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.4-2.3 1a7 7 0 0 0-1.7-1L14.5 3h-5l-.4 3.1a7 7 0 0 0-1.7 1l-2.3-1-2 3.4L5 11a7 7 0 0 0 0 2l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 1.7 1l.4 3.1h5l.4-3.1a7 7 0 0 0 1.7-1l2.3 1 2-3.4-2-1.5a7 7 0 0 0 .2-1z"/>
+<path d="M19 12a7 7 0 0 0-.2-2l2-1.5-2-3.4-2.3 1a7 7 0 0 0-1.7-1L14.5 2h-5l-.4 3.1a7 7 0 0 0-1.7 1l-2.3-1-2 3.4L5 10a7 7 0 0 0 0 4l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 1.7 1l.4 3.1h5l.4-3.1a7 7 0 0 0 1.7-1l2.3 1 2-3.4-2-1.5c.2-.7.3-1.3.3-2z"/>
 
 </svg>
 
 </div>
 
+<span>设置</span>
+
+</button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- Chat 页面 -->
+
+<section class="screen app-screen" data-screen="chat">
+
+<div id="chat-main">
+
+
+<header class="chat-header">
+
+<h2>Chat</h2>
+
+<button id="add-contact">
+
+<svg viewBox="0 0 24 24">
+<path d="M12 5v14M5 12h14"/>
+</svg>
+
+</button>
+
+</header>
+
+
+<div class="contact-list" id="contact-list">
+
+</div>
+
+
+</div><!-- 聊天窗口 -->
+
+<div id="chat-room" class="hidden">
+
+
+<header class="room-header">
+
+<button id="back-chat">
+
+<svg viewBox="0 0 24 24">
+<path d="M15 5L8 12L15 19"/>
+</svg>
+
+</button>
+
+
+<div class="room-title">
+<div class="avatar-small"></div>
+<span id="chat-name">Angel</span>
+</div>
+
+
+<button>
+
+<svg viewBox="0 0 24 24">
+<circle cx="12" cy="5" r="1.5"/>
+<circle cx="12" cy="12" r="1.5"/>
+<circle cx="12" cy="19" r="1.5"/>
+</svg>
+
+</button>
+
+</header>
+
+
+
+
+<div class="messages" id="messages">
+
+
+<div class="system-date">
+今天 23:32
+</div>
+
+
+<div class="message left">
+
+<div class="avatar-small"></div>
+
+<div class="bubble">
+
+你好，我是 Angel。
+
+</div>
+
+</div>
+
+
+
+<div class="message right">
+
+<div class="bubble">
+
+你好。
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="input-bar">
+
+
+<button>
+
+<svg viewBox="0 0 24 24">
+<path d="M12 5v14M5 12h14"/>
+</svg>
+
+</button>
+
+
+
+<input id="message-input"
+placeholder="输入消息..."
+>
+
+
+
+<button id="send-btn">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M5 12h14"/>
+<path d="M13 6l6 6-6 6"/>
+
+</svg>
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- 底部导航 -->
+
+<nav class="chat-nav">
+
+
+<button class="active" data-page="contacts">
+
+<svg viewBox="0 0 24 24">
+<path d="M4 6h16v10H9l-5 4z"/>
+</svg>
 
 <span>
+联系人
+</span>
+
+</button>
+
+
+
+
+<button data-page="add">
+
+<svg viewBox="0 0 24 24">
+<path d="M12 5v14M5 12h14"/>
+</svg>
+
+<span>
+添加
+</span>
+
+</button>
+
+
+
+
+
+<button data-page="moments">
+
+<svg viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="8"/>
+<circle cx="12" cy="12" r="2"/>
+</svg>
+
+<span>
+朋友圈
+</span>
+
+</button>
+
+
+
+
+
+<button data-page="profile">
+
+<svg viewBox="0 0 24 24">
+
+<circle cx="12" cy="8" r="3"/>
+
+<path d="M5 19c1-3 3-5 7-5s6 2 7 5"/>
+
+</svg>
+
+<span>
+主页
+</span>
+
+</button>
+
+
+
+</nav>
+
+
+
+
+
+</section><!-- 添加页面 -->
+
+<div id="add-page" class="sub-page hidden">
+
+<header class="simple-header">
+<h2>添加</h2>
+</header>
+
+
+<button class="menu-cell" id="create-character">
+
+<svg viewBox="0 0 24 24">
+<path d="M12 5v14M5 12h14"/>
+</svg>
+
+<span>
+创建 Character
+</span>
+
+</button>
+
+
+<button class="menu-cell">
+
+<svg viewBox="0 0 24 24">
+<circle cx="8" cy="9" r="3"/>
+<circle cx="16" cy="9" r="3"/>
+<path d="M3 20c1-3 3-5 5-5h8c2 0 4 2 5 5"/>
+</svg>
+
+<span>
+创建群组
+</span>
+
+</button>
+
+
+</div>
+
+
+
+
+
+<!-- 朋友圈 -->
+
+<div id="moments-page" class="sub-page hidden">
+
+
+<header class="simple-header">
+
+<h2>
+朋友圈
+</h2>
+
+</header>
+
+
+
+<div class="moment-card">
+
+<div class="avatar-medium"></div>
+
+
+<div>
+
+<h3>
+Angel
+</h3>
+
+<p>
+今天也要保持温柔。
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- 主页 -->
+
+
+<div id="profile-page" class="sub-page hidden">
+
+
+<header class="simple-header">
+
+<h2>
+主页
+</h2>
+
+</header>
+
+
+
+<div class="profile-center">
+
+<div class="avatar-large"></div>
+
+
+<h2>
+Angel
+</h2>
+
+
+<p>
+Angel Phone 用户</p>
+
+
+</div>
+
+
+
+<button class="menu-cell">
+
+<svg viewBox="0 0 24 24">
+
+<circle cx="12" cy="8" r="3"/>
+
+<path d="M5 19c1-3 3-5 7-5s6 2 7 5"/>
+
+</svg>
+
+
+<span>
+个人资料
+</span>
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+<!-- 设置 -->
+
+
+<section class="sub-page hidden" id="settings-page">
+
+
+<header class="simple-header">
+
+<button id="back-home">
+
+<svg viewBox="0 0 24 24">
+<path d="M15 5L8 12L15 19"/>
+</svg>
+
+</button>
+
+
+<h2>
 设置
+</h2>
+
+
+</header>
+
+
+
+<div class="menu-cell">
+
+<svg viewBox="0 0 24 24">
+
+<circle cx="12" cy="12" r="3"/>
+
+</svg>
+
+
+<span>
+系统设置
 </span>
 
 
-</button>
+</div>
+
+
+<div class="menu-cell">
+
+<svg viewBox="0 0 24 24">
+
+<circle cx="12" cy="12" r="9"/>
+
+</svg>
+
+
+<span>
+关于 Angel Phone
+</span>
 
 
 </div>
@@ -150,85 +530,48 @@ Chat
 
 
 
-<!-- ================= CHAT APP ================= -->
+
+<!-- 创建角色弹窗 -->
+
+<div class="popup hidden" id="character-popup">
 
 
-<section class="screen app-screen" data-screen="chat">
-
-
-
-<!-- CHAT 首页 -->
-
-
-<div class="chat-home">
-
-
-
-<header class="chat-header">
+<div class="popup-box">
 
 
 <h2>
-Chat
+创建 Character
 </h2>
 
 
-<button id="chat-add">
+<input 
+id="character-input"
+placeholder="输入名字"
+>
 
-<svg viewBox="0 0 24 24">
 
-<path d="M12 5v14M5 12h14"/>
-
-</svg>
-
+<button id="save-character">
+创建
 </button>
 
 
-</header>
-
-
-
-
-<div class="profile-card">
-
-
-<div class="avatar">
-
-
-<svg viewBox="0 0 24 24">
-
-<circle cx="12" cy="8" r="3"/>
-
-<path d="M5 19c1-3 3-5 7-5s6 2 7 5"/>
-
-</svg>
+<button id="cancel-character">
+取消
+</button>
 
 
 </div>
-
-
-<div>
-
-
-<h3>
-Angel
-</h3>
-
-<p>
-一颗心，半滴泪。
-</p>
-
-
-</div>
-
 
 </div>
 
 
 
-<div id="contact-list">
-
-</div>
-
 
 
 </div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
